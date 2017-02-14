@@ -1,0 +1,10 @@
+## -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+def build(bld):
+    if not bld.env['ENABLE_EXAMPLES']:
+        return;
+
+    obj = bld.create_ns3_program('drive-dumbbell',
+                                ['core', 'internet', 'tcp-eval-suite', 'point-to-point', 'applications', 'point-to-point-layout','tmix','delaybox','point-to-point','flow-monitor','netanim'])
+    obj.source = 'drive-dumbbell.cc'
+

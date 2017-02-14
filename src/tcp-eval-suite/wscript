@@ -1,0 +1,37 @@
+# -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+# def options(opt):
+#     pass
+
+# def configure(conf):
+#     conf.check_nonfatal(header_name='stdint.h', define_name='HAVE_STDINT_H')
+
+def build(bld):
+    module = bld.create_ns3_module('tcp-eval-suite', ['core', 'tmix', 'delaybox','network', 'internet'])
+    module.source = [
+        'model/configure-topology.cc',
+        'model/dumbbell-topology.cc',
+        'model/traffic-parameters.cc',
+        'model/create-traffic.cc',
+        'model/eval-stats.cc', 
+        'model/tmix-variables.cc', 
+        #'model/tmix-shuffle.cc'  
+        ]
+
+    headers = bld(features='ns3header')
+    headers.module = 'tcp-eval-suite'
+    headers.source = [
+        'model/configure-topology.h',
+        'model/dumbbell-topology.h',
+        'model/traffic-parameters.h',
+        'model/create-traffic.h',
+        'model/eval-stats.h',
+        'model/tmix-variables.h',
+        #'model/tmix-shuffle.h',
+        ]
+
+    if (bld.env['ENABLE_EXAMPLES']):
+        bld.recurse('examples')
+
+    # bld.ns3_python_bindings()
+

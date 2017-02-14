@@ -1,0 +1,45 @@
+# -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+# def options(opt):
+#     pass
+
+# def configure(conf):
+#     conf.check_nonfatal(header_name='stdint.h', define_name='HAVE_STDINT_H')
+
+def build(bld):
+    module = bld.create_ns3_module('common-tcp-eval-suite', ['core'])
+    module.source = [
+        'model/create-dumbbell.cc',
+        'model/tmix-shuffle.cc',
+        'model/eval-app.cc',
+        'model/eval-ts.cc',
+        'model/tmix-topology.cc',
+        'model/tmix-topology-parameter.cc',
+        'helper/scenario-helper.cc',
+        'helper/tmix-scenario-helper.cc'
+        ]
+
+    module_test = bld.create_ns3_module_test_library('common-tcp-eval-suite')
+    module_test.source = [
+        'test/common-tcp-eval-suite-test-suite.cc',
+        ]
+
+    headers = bld(features='ns3header')
+    headers.module = 'common-tcp-eval-suite'
+    headers.source = [
+        'model/create-dumbbell.h',
+        'model/tmix-shuffle.h',
+        'model/eval-app.h',
+        'model/eval-ts.h',
+        'model/tmix-topology.h',
+        'model/tmix-topology-parameter.h',
+        'helper/scenario-helper.h',
+        'helper/tmix-scenario-helper.h'
+
+        ]
+
+    if bld.env.ENABLE_EXAMPLES:
+        bld.recurse('examples')
+
+    # bld.ns3_python_bindings()
+
