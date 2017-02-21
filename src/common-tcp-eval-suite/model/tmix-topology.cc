@@ -179,18 +179,6 @@ TmixTopology::Summary (std::string ScenarioName, std::string TcpName, uint32_t e
   *m_Avgfile->GetStream ()<< "\nAverage ThroughPut:  "<< (m_TPrecordTotalR)/m_TPTotalR<< "\n";
   *m_Avgfile->GetStream ()<< "\nAverage PacketDrop:  "<< (TotaldroppedPacketsR)/Total_numdPktsR<< "\n";
 }
-void
-TmixTopology::PayloadSize (Ptr<const Packet> packet, const Address & address)
-{
- NS_LOG_DEBUG (packet->GetSize ()); //In theory goodput is the time average of this
-}
-
-void
-TmixTopology::TCPinfo (Ptr<const Packet> packet, const TcpHeader& tcpheader,
-                             Ptr<const TcpSocketBase> tsb)
-{
-  NS_LOG_DEBUG (tcpheader);
-}
 
 void
 TmixTopology::DestroyConnection ()
