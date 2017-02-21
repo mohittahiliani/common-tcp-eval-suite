@@ -37,7 +37,6 @@
  */
 
 #include "tmix-topology.h"
-#include "ns3/eval-app.h"
 #include "ns3/eval-ts.h" 
 
 #include "ns3/node-container.h"

@@ -9,13 +9,10 @@
 def build(bld):
     module = bld.create_ns3_module('common-tcp-eval-suite', ['core'])
     module.source = [
-        'model/create-dumbbell.cc',
         'model/tmix-shuffle.cc',
-        'model/eval-app.cc',
         'model/eval-ts.cc',
         'model/tmix-topology.cc',
         'model/tmix-topology-parameter.cc',
-        'helper/scenario-helper.cc',
         'helper/tmix-scenario-helper.cc'
         ]
 
@@ -27,13 +24,10 @@ def build(bld):
     headers = bld(features='ns3header')
     headers.module = 'common-tcp-eval-suite'
     headers.source = [
-        'model/create-dumbbell.h',
         'model/tmix-shuffle.h',
-        'model/eval-app.h',
         'model/eval-ts.h',
         'model/tmix-topology.h',
         'model/tmix-topology-parameter.h',
-        'helper/scenario-helper.h',
         'helper/tmix-scenario-helper.h'
 
         ]
