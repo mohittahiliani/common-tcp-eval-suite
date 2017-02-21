@@ -259,8 +259,6 @@ private:
   void PacketEnqueueR (Ptr<const QueueItem> item);
   void PacketDequeueR (Ptr<const QueueItem> item);
   void PacketSizeR (Ptr<const Packet> packet);
-  void PayloadSize (Ptr<const Packet> packet, const Address & address);
-  void TCPinfo (Ptr<const Packet> packet, const TcpHeader& tcpheader, Ptr<const TcpSocketBase> tsb);
 
   Ptr<Node> m_leftRouter, m_rightRouter;
   Ptr<PointToPointChannel> m_centerChannel;
